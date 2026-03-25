@@ -1,260 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-B1W0Z21D50"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-B1W0Z21D50');
-</script>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Lumina Studio — Home</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
-  <style>
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
-    :root {
-      --ink: #0d0c0a;
-      --cream: #f5f0e8;
-      --gold: #c8a96e;
-      --gold-light: #e8d5a8;
-      --rust: #b05c3a;
-      --muted: #8a8070;
-      --white: #fefefe;
-    }
-
-    html { scroll-behavior: smooth; }
-    body { background: var(--cream); color: var(--ink); font-family: 'DM Sans', sans-serif; overflow-x: hidden; }
-
-    /* NAV */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 1.4rem 4rem;
-      background: rgba(245,240,232,0.92);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(200,169,110,0.25);
-    }
-    .nav-logo { font-family: 'Playfair Display', serif; font-size: 1.5rem; letter-spacing: 0.04em; color: var(--ink); text-decoration: none; }
-    .nav-logo span { color: var(--gold); font-style: italic; }
-    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
-    .nav-links a { text-decoration: none; color: var(--muted); font-size: 0.9rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; transition: color 0.3s; position: relative; }
-    .nav-links a::after { content: ''; position: absolute; bottom: -3px; left: 0; width: 0; height: 1px; background: var(--gold); transition: width 0.3s; }
-    .nav-links a:hover { color: var(--ink); }
-    .nav-links a:hover::after { width: 100%; }
-    .nav-links a.active { color: var(--gold); }
-
-    /* HERO */
-    .hero { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; padding-top: 80px; overflow: hidden; }
-    .hero-text { display: flex; flex-direction: column; justify-content: center; padding: 5rem 4rem 5rem 6rem; animation: fadeUp 1s ease both; }
-    .hero-eyebrow { display: flex; align-items: center; gap: 1rem; font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); font-weight: 500; margin-bottom: 1.8rem; }
-    .hero-eyebrow::before { content: ''; width: 40px; height: 1px; background: var(--gold); }
-    h1 { font-family: 'Playfair Display', serif; font-size: clamp(3rem, 5vw, 5.5rem); line-height: 1.08; letter-spacing: -0.02em; margin-bottom: 2rem; }
-    h1 em { color: var(--rust); font-style: italic; }
-    .hero-desc { font-size: 1.05rem; line-height: 1.75; color: var(--muted); max-width: 420px; margin-bottom: 3rem; }
-    .btn-group { display: flex; gap: 1rem; align-items: center; }
-    .btn-primary { display: inline-block; background: var(--ink); color: var(--cream); padding: 1rem 2.4rem; border-radius: 2px; text-decoration: none; font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 500; transition: background 0.3s, transform 0.2s; }
-    .btn-primary:hover { background: var(--gold); color: var(--ink); transform: translateY(-2px); }
-    .btn-outline { display: inline-block; border: 1px solid var(--gold); color: var(--gold); padding: 1rem 2.4rem; border-radius: 2px; text-decoration: none; font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 500; transition: all 0.3s; }
-    .btn-outline:hover { background: var(--gold); color: var(--ink); transform: translateY(-2px); }
-
-    .hero-visual { position: relative; background: var(--ink); overflow: hidden; }
-    .hero-visual::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 30% 40%, rgba(200,169,110,0.18) 0%, transparent 60%), radial-gradient(ellipse at 80% 80%, rgba(176,92,58,0.12) 0%, transparent 50%); }
-    .hero-pattern { position: absolute; inset: 0; background-image: repeating-linear-gradient(45deg, transparent, transparent 40px, rgba(200,169,110,0.04) 40px, rgba(200,169,110,0.04) 41px); }
-    .hero-card { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 300px; animation: floatCard 6s ease-in-out infinite; }
-    .card-inner { background: rgba(245,240,232,0.06); border: 1px solid rgba(200,169,110,0.3); border-radius: 4px; padding: 2.5rem; backdrop-filter: blur(8px); text-align: center; }
-    .card-icon { width: 60px; height: 60px; background: var(--gold); border-radius: 50%; margin: 0 auto 1.5rem; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; }
-    .card-inner h3 { font-family: 'Playfair Display', serif; color: var(--cream); font-size: 1.3rem; margin-bottom: 0.5rem; }
-    .card-inner p { color: rgba(245,240,232,0.55); font-size: 0.85rem; }
-    .hero-stat { position: absolute; background: var(--gold); padding: 1.2rem 1.8rem; border-radius: 3px; }
-    .hero-stat.s1 { bottom: 14%; left: 8%; animation: floatStat1 7s 1s ease-in-out infinite; }
-    .hero-stat.s2 { top: 18%; right: 10%; animation: floatStat2 5s 2s ease-in-out infinite; }
-    .hero-stat .num { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; color: var(--ink); display: block; }
-    .hero-stat .label { font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink); }
-
-    /* SERVICES */
-    .services { padding: 8rem 6rem; background: var(--white); }
-    .section-header { text-align: center; margin-bottom: 5rem; }
-    .section-eyebrow { font-size: 0.75rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); font-weight: 500; margin-bottom: 1rem; display: block; }
-    h2 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 3.5vw, 3.2rem); line-height: 1.15; }
-    h2 em { color: var(--rust); font-style: italic; }
-    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
-    .service-card { padding: 3rem 2.5rem; background: var(--cream); transition: background 0.35s, transform 0.3s; cursor: default; position: relative; overflow: hidden; }
-    .service-card::before { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: var(--gold); transform: scaleX(0); transform-origin: left; transition: transform 0.4s; }
-    .service-card:hover { background: var(--ink); transform: translateY(-4px); }
-    .service-card:hover::before { transform: scaleX(1); }
-    .service-card:hover .service-num, .service-card:hover h3, .service-card:hover p { color: var(--cream); }
-    .service-num { font-family: 'Playfair Display', serif; font-size: 3.5rem; font-weight: 700; color: var(--gold-light); line-height: 1; margin-bottom: 1.5rem; transition: color 0.35s; }
-    .service-card h3 { font-family: 'Playfair Display', serif; font-size: 1.35rem; margin-bottom: 1rem; transition: color 0.35s; }
-    .service-card p { font-size: 0.9rem; line-height: 1.7; color: var(--muted); transition: color 0.35s; }
-
-    /* ABOUT */
-    .about-strip { display: grid; grid-template-columns: 1fr 1fr; min-height: 500px; }
-    .about-img { background: var(--ink); position: relative; overflow: hidden; }
-    .about-img-inner { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(200,169,110,0.15) 0%, transparent 50%), repeating-linear-gradient(0deg, transparent, transparent 60px, rgba(200,169,110,0.05) 60px, rgba(200,169,110,0.05) 61px); }
-    .about-img-text { position: absolute; bottom: 3rem; left: 3rem; right: 3rem; }
-    .about-img-text blockquote { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.6rem; color: var(--cream); line-height: 1.4; }
-    .about-img-text cite { display: block; margin-top: 1rem; font-size: 0.8rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); }
-    .about-content { background: var(--gold); padding: 5rem 4rem; display: flex; flex-direction: column; justify-content: center; }
-    .about-content .section-eyebrow { color: var(--ink); text-align: left; }
-    .about-content h2 { color: var(--ink); margin-bottom: 1.5rem; }
-    .about-content p { font-size: 1rem; line-height: 1.8; color: rgba(13,12,10,0.7); margin-bottom: 2rem; }
-    .about-content .btn-primary { background: var(--ink); color: var(--cream); align-self: flex-start; }
-    .about-content .btn-primary:hover { background: var(--rust); color: var(--cream); }
-
-    /* FOOTER */
-    footer { background: var(--ink); color: var(--cream); padding: 4rem 6rem 2rem; }
-    .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 4rem; margin-bottom: 3rem; padding-bottom: 3rem; border-bottom: 1px solid rgba(200,169,110,0.2); }
-    .footer-brand .nav-logo { color: var(--cream); }
-    .footer-brand p { margin-top: 1rem; font-size: 0.9rem; line-height: 1.7; color: rgba(254,254,254,0.5); max-width: 300px; }
-    .footer-col h4 { font-size: 0.75rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.4rem; }
-    .footer-col ul { list-style: none; }
-    .footer-col ul li { margin-bottom: 0.8rem; }
-    .footer-col ul a { text-decoration: none; color: rgba(254,254,254,0.5); font-size: 0.9rem; transition: color 0.3s; }
-    .footer-col ul a:hover { color: var(--gold); }
-    .footer-bottom { display: flex; justify-content: space-between; align-items: center; }
-    .footer-bottom p { font-size: 0.8rem; color: rgba(254,254,254,0.3); }
-
-    @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-    @keyframes floatCard { 0%,100% { transform: translate(-50%, -50%) translateY(0); } 50% { transform: translate(-50%, -50%) translateY(-15px); } }
-    @keyframes floatStat1 { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
-    @keyframes floatStat2 { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
-
-    .service-card:nth-child(1) { animation: fadeUp 0.6s 0.1s ease both; }
-    .service-card:nth-child(2) { animation: fadeUp 0.6s 0.25s ease both; }
-    .service-card:nth-child(3) { animation: fadeUp 0.6s 0.4s ease both; }
-
-    @media (max-width: 900px) {
-      nav { padding: 1.2rem 2rem; }
-      .hero { grid-template-columns: 1fr; min-height: auto; }
-      .hero-text { padding: 6rem 2rem 3rem; }
-      .hero-visual { height: 380px; }
-      .services { padding: 5rem 2rem; }
-      .services-grid { grid-template-columns: 1fr; }
-      .about-strip { grid-template-columns: 1fr; }
-      footer { padding: 3rem 2rem 1.5rem; }
-      .footer-top { grid-template-columns: 1fr; gap: 2rem; }
-      .footer-bottom { flex-direction: column; gap: 0.5rem; }
-    }
-  </style>
+  <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
-
-<nav>
-  <a href="index.html" class="nav-logo">Lumina<span>Studio</span></a>
-  <ul class="nav-links">
-    <li><a href="index.html" class="active">Home</a></li>
-    <li><a href="#services">Services</a></li>
-    <li><a href="#about">About</a></li>
-    <li><a href="contact.html">Contact</a></li>
-  </ul>
-</nav>
-
-<section class="hero">
-  <div class="hero-text">
-    <div class="hero-eyebrow">Creative Studio</div>
-    <h1>Where Ideas <em>Become</em> Reality</h1>
-    <p class="hero-desc">We craft immersive digital experiences that captivate audiences and drive meaningful results for forward-thinking brands.</p>
-    <div class="btn-group">
-      <a href="#services" class="btn-primary">Our Services</a>
-      <a href="contact.html" class="btn-outline">Get In Touch</a>
-    </div>
-  </div>
-  <div class="hero-visual">
-    <div class="hero-pattern"></div>
-    <div class="hero-card">
-      <div class="card-inner">
-        <div class="card-icon">✦</div>
-        <h3>Award Winning</h3>
-        <p>Design & development studio</p>
+  <nav>
+    <a href="index.html" class="brand">Lumina</a>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+  <main>
+    <section class="hero">
+      <div class="hero-left">
+        <p class="tag">Creative Studio</p>
+        <h1 class="hero-title">Where <em>ideas</em><br>become<br>reality.</h1>
+        <p class="hero-desc">We craft brand identities, digital experiences, and visual narratives that leave a lasting impression on the world.</p>
+        <a href="contact.html" class="btn">Start a Project</a>
       </div>
-    </div>
-    <div class="hero-stat s1">
-      <span class="num">200+</span>
-      <span class="label">Projects Delivered</span>
-    </div>
-    <div class="hero-stat s2">
-      <span class="num">98%</span>
-      <span class="label">Client Satisfaction</span>
-    </div>
-  </div>
-</section>
-
-<section class="services" id="services">
-  <div class="section-header">
-    <span class="section-eyebrow">What We Offer</span>
-    <h2>Crafted with <em>Purpose</em></h2>
-  </div>
-  <div class="services-grid">
-    <div class="service-card">
-      <div class="service-num">01</div>
-      <h3>Brand Identity</h3>
-      <p>We build brand identities that resonate — from logo systems and color palettes to comprehensive visual guidelines that scale across every touchpoint.</p>
-    </div>
-    <div class="service-card">
-      <div class="service-num">02</div>
-      <h3>Web Design</h3>
-      <p>Pixel-perfect interfaces built with intent. Every layout, interaction, and transition is crafted to delight users while serving your business goals.</p>
-    </div>
-    <div class="service-card">
-      <div class="service-num">03</div>
-      <h3>Digital Strategy</h3>
-      <p>Data-informed strategy that connects creative vision to business outcomes. We help you define, refine, and execute your digital presence with clarity.</p>
-    </div>
-  </div>
-</section>
-
-<section class="about-strip" id="about">
-  <div class="about-img">
-    <div class="about-img-inner"></div>
-    <div class="about-img-text">
-      <blockquote>"Design is not just what it looks like. Design is how it works."</blockquote>
-      <cite>— Studio Philosophy</cite>
-    </div>
-  </div>
-  <div class="about-content">
-    <span class="section-eyebrow">About Us</span>
-    <h2>A Studio Built on <em>Craft</em></h2>
-    <p>Founded in 2018, Lumina Studio is an independent creative studio specializing in brand identity, digital design, and strategic consulting for ambitious companies worldwide.</p>
-    <p>We believe great design emerges from deep understanding — of your audience, your brand, and the world you operate in.</p>
-    <a href="contact.html" class="btn-primary">Start a Project</a>
-  </div>
-</section>
-
-<footer>
-  <div class="footer-top">
-    <div class="footer-brand">
-      <a href="index.html" class="nav-logo">Lumina<span>Studio</span></a>
-      <p>Independent creative studio crafting meaningful digital experiences since 2018.</p>
-    </div>
-    <div class="footer-col">
-      <h4>Navigate</h4>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Contact</h4>
-      <ul>
-        <li><a href="mailto:hello@lumina.studio">hello@lumina.studio</a></li>
-        <li><a href="#">+1 (555) 000-1234</a></li>
-        <li><a href="#">Instagram</a></li>
-        <li><a href="#">LinkedIn</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <p>© 2026 Lumina Studio. All rights reserved.</p>
-    <p>Crafted with intention.</p>
-  </div>
-</footer>
-
+      <div class="hero-right">
+        <div class="hero-pattern"></div>
+        <div class="hero-orb"><span>L</span></div>
+      </div>
+    </section>
+    <section class="section" style="background:var(--surface);border-top:1px solid var(--border);">
+      <div class="section-header">
+        <p class="tag">What we do</p>
+        <h2 class="section-title">Our Services</h2>
+      </div>
+      <div class="cards-grid">
+        <div class="card">
+          <div class="card-num">01</div>
+          <h3>Brand Identity</h3>
+          <p>Logos, color systems, and typography crafted to tell your story with clarity and confidence.</p>
+        </div>
+        <div class="card">
+          <div class="card-num">02</div>
+          <h3>Web Design</h3>
+          <p>Pixel-perfect digital experiences that are fast, accessible, and genuinely beautiful.</p>
+        </div>
+        <div class="card">
+          <div class="card-num">03</div>
+          <h3>Strategy</h3>
+          <p>Positioning, messaging, and visual direction that sets you apart in a crowded market.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer>© 2026 Lumina Studio — Crafted with <span>♥</span></footer>
 </body>
 </html>
